@@ -1,3 +1,4 @@
 *.prefs
 *.xcworkspace/
 *.classpath
+.DS_Store
