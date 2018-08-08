@@ -4,7 +4,7 @@
 # This approach uses more memory - n - in the worst case but 
 # is easier to understand and mantain for other developers.
 # Depending on the size of the array this would be a problem or not.
-
+# We can also use a set for checking the visited to make it more efficient
 def circular_graph?(array)
 	return false if array.size.zero?
 	visited = array.size.times.map{ |i| false }
