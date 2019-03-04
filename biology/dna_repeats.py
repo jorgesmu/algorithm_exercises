@@ -21,11 +21,11 @@ def find_repeats(dna_sequence, slice_window_size):
 		current_slice = dna_sequence[i:i+slice_window_size]
 		# Testing using in operator is O(1) in python
 		if current_slice in seen_sequences:
-			taget_set = repeated_sequences
+			target_set = repeated_sequences
 		else:
-			taget_set = seen_sequences
+			target_set = seen_sequences
 		# Adding to a set is O(1)
-		taget_set.add(current_slice)
+		target_set.add(current_slice)
 	return repeated_sequences
 
 dna_sequence = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
