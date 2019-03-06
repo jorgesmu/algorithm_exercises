@@ -30,9 +30,39 @@ def find_repeats(dna_sequence, slice_window_size):
 
 dna_sequence = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
 slice_window_size = 10
+print('Results without compression')
 print(find_repeats(dna_sequence, slice_window_size))
 
 # Conclusion:
 # The java solution exposed here follows the exact same logic propoused here. The difference (in this case),
 # that being dna 4 digits code(2^2) and being able to represent it with bits each letter of dna will take 2 bits in memory
 # instaed of 1B. But all the others procedures and conclusions are valid and based on the same approach
+
+
+def find_reapeats_bit_implementation(dna_sequence, window_size):
+	if len(dna_sequence) <= window_size:
+		return []
+	
+	current_window = 0
+	seen_sequences =  set()
+	repeated_sequences = set()
+	window_mask = (1 << 20) - 1 # This provides a mask with 20 1's
+	dna_to_bits = {
+		'A': int('00', 2),
+		'C': int('01', 2), 		
+		'G': int('10', 2),
+		'T': int('11', 2),
+	}
+
+	for i in range(0, len(dna_sequence)):
+		current_window =  ((current_window<<2) + dna_to_bits[dna_sequence[i]]) & window_mask
+		import pdb; pdb.set_trace()
+		if i > 9:
+			if current_window in seen_sequences:
+				repeated_sequences.add(dna_sequence[i-window_size:window_size-1])
+			else:
+				seen_sequences.add(current_window)
+	return repeated_sequences
+	
+print('Results with bit compression')
+print(find_reapeats_bit_implementation(dna_sequence, slice_window_size))
