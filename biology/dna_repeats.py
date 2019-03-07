@@ -77,3 +77,50 @@ print(find_reapeats_bit_implementation(dna_sequence, slice_window_size))
 # In [3]: sys.getsizeof(str())
 # Out[3]: 49
 # This difference might be much more considerable with bigger window sizes
+# For this approach (prioritizing processing time over memory) ideally we would like to
+# represent out hash keys with the exact number of bits that we need and have o(1) access time
+# and insignificant hashing function time
+# Also empty bytearray and bit array consume 56 and 96 Bytes each. It would be ideal to mesuare how 
+# they grow in size as n grows to choose the right implementation
+
+
+# Another turn around to the problem: count the numbers of each reapeat
+def count_reapeats_bit_implementation(dna_sequence, window_size):
+	if len(dna_sequence) <= window_size:
+		return []
+	
+	current_window = 0
+	# Dedided to move repeated_sequences in memory as dna_value: frequency and keep the bit compression approach
+	# If not, will need to calculate it in the end making a bit to dna
+	# translation and we will hold the same amount of memory later on
+	# We are keeping the seen sequences set as a cache for all the comparison
+	# as we expect a lot of dna to be compared but only a few repeats to appear. If not, depending on the case,
+	# it might be enough to work with the repeated_sequences hash only
+	seen_sequences =  set() 
+	repeated_sequences = {}
+	window_mask = (1 << 20) - 1 # This provides a mask with 20 1's
+	dna_to_bits = {
+		'A': int('00', 2),
+		'C': int('01', 2), 		
+		'G': int('10', 2),
+		'T': int('11', 2),
+	}
+
+	for i in range(0, len(dna_sequence)):
+		current_window =  ((current_window<<2) + dna_to_bits[dna_sequence[i]]) & window_mask
+		if i >= (window_size-1):
+			if current_window in seen_sequences:
+				repeated_dna_sequence = dna_sequence[i-window_size+1:i+1]
+				if repeated_dna_sequence in repeated_sequences:
+					repeated_sequences[repeated_dna_sequence] += 1
+				else:
+					repeated_sequences[repeated_dna_sequence] = 2
+			else:
+				seen_sequences.add(current_window)
+	return repeated_sequences
+
+dna_sequence = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTTAAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+slice_window_size = 10
+print('Results count repeats (duplicated dna sequence) with compression')
+print(count_reapeats_bit_implementation(dna_sequence, slice_window_size))
+
