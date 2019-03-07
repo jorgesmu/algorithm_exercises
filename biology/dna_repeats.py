@@ -66,9 +66,9 @@ def find_reapeats_bit_implementation(dna_sequence, window_size):
 print('Results with bit compression')
 print(find_reapeats_bit_implementation(dna_sequence, slice_window_size))
 
-# This second implementation compress the space used in memory (anyway, is the same order of magnitude)
+# This second implementation implements compression reducing the space used in memory (anyway, is still the same order of magnitude)
 # it is interesting to remark that in python 3 an empty int (bits are represented as int's) takes 24B which
-# is considerable greater than 2 bits. Emptry string takes 49B
+# is considerable greater than 2 bits. Empty string takes 49B
 # In [1]: import sys
 
 # In [2]: sys.getsizeof(int())
