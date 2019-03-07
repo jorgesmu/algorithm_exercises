@@ -56,13 +56,24 @@ def find_reapeats_bit_implementation(dna_sequence, window_size):
 
 	for i in range(0, len(dna_sequence)):
 		current_window =  ((current_window<<2) + dna_to_bits[dna_sequence[i]]) & window_mask
-		import pdb; pdb.set_trace()
-		if i > 9:
+		if i >= (window_size-1):
 			if current_window in seen_sequences:
-				repeated_sequences.add(dna_sequence[i-window_size:window_size-1])
+				repeated_sequences.add(dna_sequence[i-window_size+1:i+1])
 			else:
 				seen_sequences.add(current_window)
 	return repeated_sequences
 	
 print('Results with bit compression')
 print(find_reapeats_bit_implementation(dna_sequence, slice_window_size))
+
+# This second implementation compress the space used in memory (anyway, is the same order of magnitude)
+# it is interesting to remark that in python 3 an empty int (bits are represented as int's) takes 24B which
+# is considerable greater than 2 bits. Emptry string takes 49B
+# In [1]: import sys
+
+# In [2]: sys.getsizeof(int())
+# Out[2]: 24
+
+# In [3]: sys.getsizeof(str())
+# Out[3]: 49
+# This difference might be much more considerable with bigger window sizes
