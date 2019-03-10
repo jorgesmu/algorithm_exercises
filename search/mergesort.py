@@ -20,4 +20,3 @@ def mergesort(collection):
 
 collection = [1, 3, 23, 42, -2, 1234, 6, 7, 6]
 print(mergesort(collection))
-
