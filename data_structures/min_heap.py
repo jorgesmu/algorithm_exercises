@@ -1,6 +1,11 @@
+import operator
+# notice that is min heap by deafult but can be max heap changing the operator
 class MinHeap(object):
-	def __init__(self, array):
+	def __init__(self, array, inequality = operator.lt):
 		self.array = array
+		self.inequality = inequality
+		if len(array) == 0:
+			return
 		self.heapify()
 
 
@@ -30,19 +35,21 @@ class MinHeap(object):
 
 
 	def parent(self, index):
-		parent_index = int((index-1)/2)
-		if parent_index < 0:
+		if index <= 0:
 			return None
+		parent_index = int((index-1)/2)
 		return parent_index
 
 
 	# sift up the last element
 	def sift_up(self):
 		array = self.array
+		if len(array) == 1:
+			return
 		current_index = len(array)-1
 		parent_index = self.parent(current_index)
-		while(parent_index >= 0):
-			if array[parent_index] <= array[current_index]:
+		while(parent_index is not None):
+			if self.inequality(array[parent_index],  array[current_index]):
 				return
 			array[parent_index], array[current_index] = array[current_index], array[parent_index]
 			current_index = parent_index
@@ -56,10 +63,10 @@ class MinHeap(object):
 		left_index = self.left_child(current_index) 
 		while(left_index <= max):
 			swap_index = current_index
-			if self.array[left_index] < self.array[swap_index]:
+			if self.inequality(self.array[left_index], self.array[swap_index]):
 				swap_index = left_index
 			right_index = self.right_child(current_index)
-			if right_index <= max and self.array[right_index] < self.array[swap_index]:
+			if right_index <= max and self.inequality(self.array[right_index], self.array[swap_index]):
 				swap_index = right_index
 			if swap_index == current_index:
 				return
