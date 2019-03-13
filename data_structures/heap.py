@@ -1,6 +1,6 @@
 import operator
 # notice that is min heap by deafult but can be max heap changing the operator
-class MinHeap(object):
+class Heap(object):
 	def __init__(self, array, inequality = operator.lt):
 		self.array = array
 		self.inequality = inequality
