@@ -1,4 +1,6 @@
 # Implementation based on https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
+# Complexity: O(w*n) n = number of elements.
+# Without dynamic programming O(2^n)
 def knapsack(w, vt, wt):
 	values = [[None for ei in range(len(vt)+1)] for wi in range(w+1)] # values[capacity][element]
 	for wi in range(w+1):
