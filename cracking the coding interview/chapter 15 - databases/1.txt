@@ -1,0 +1,7 @@
+# schema: 
+# Employees(id, ..., department_id)
+# Departments(id, name, ...)
+
+SELECT count(*), d.name FROM employees e, deparments d
+WHERE e.department_id = d.id
+GROUP BY d.name
