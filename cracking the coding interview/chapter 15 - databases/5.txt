@@ -1,0 +1,12 @@
+# Schema:
+#students(id, first_name, last_name)
+#grades(id, grade, student_id, class_id)
+#classes(id, name, description)
+
+# Query
+SELECT s.first_name, s.last_name, avg(g.grade) as average
+FROM students s, grades g
+WHERE s.id = g.student_id
+GROUP BY s.first_name, s.last_name
+ORDER BY average DESC
+limit (select count(*)*0.1 from students)
