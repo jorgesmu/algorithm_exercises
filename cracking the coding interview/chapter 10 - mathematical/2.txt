@@ -1,0 +1,26 @@
+The only chance of not making a collision is if all the ants move in the same direction
+
+Given that each ant can move in two direction only there will be 2^3 = 8 different possibilities.
+0 = ANTi moves left 0 = ANTi moves right
+
+ANT1 ANT2 ANT3
+  0    0    0
+  0    0    1
+  0    1    0
+  0    1    1
+  1    0    0
+  1    0    1
+  1    1    0
+  1    1    1
+
+Given that all of the possibilities are equally likely to happen, we can apply we can apply Laplace's rule (favorable cases/total cases).
+
+In this case we see that only the first and last combination will lead to not have any collision between ants.
+
+So, the probability of having any collision c is:
+
+P(c) = 6/8 = 3/4 (0.75)
+
+Following the same reasoning for a n vertex polygon with n ants in any vertex.
+
+P(c) = (2^n-2)/2^n
