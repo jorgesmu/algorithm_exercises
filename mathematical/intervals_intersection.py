@@ -2,6 +2,7 @@
 # intersection interval between them. Each interval is
 # represented by a start and end
 
+# updated and simplified based on: https://www.youtube.com/watch?v=zGv3hOORxh0&t=30s
 def intersection(s1, e1, s2, e2):
 	start = max(s1, s2)
 	end = min(e1, e2)
