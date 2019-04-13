@@ -17,6 +17,10 @@ def reverse(stack):
 	return result_stack
 
 # from the video: using no other stack
+# this is O(n^2) in time and O(n) in space. This kind of problems
+# are more about being creative given the constrains than
+# implementing something good. It is clear that two stacks implementation
+# is better as it uses the same space and linear time.
 def reverse_in_place(stack):
 	if stack.size() == 0:
 		return
