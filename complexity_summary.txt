@@ -1,0 +1,44 @@
+Sorting:
+
+Bubblesort: O(n^2)
+mergesort: O(nlog(n))
+heapsort: O(nlog(n))
+quicksort: O(n^2)
+
+Search:
+
+binary_serach: O(log(n))
+secuential_search: O(n)
+
+Stack:
+
+insert: O(1)
+pop: O(1)
+search: O(n)
+
+Queue:
+
+insert: O(1)
+pop: O(1)
+search: O(n)
+
+Hash: (average/worst)
+
+access: average: O(1)/worst: O(n)
+search: O(n)
+insert: O(1)/O(n)
+delete: O(1)/O(n)
+
+Binary tree:
+
+search: O(log(n))
+insert(log(n))
+delete(log(n))
+
+Heap:
+
+heapify: O(n)
+insert: O(log(n))
+delete: O(log(n))
+search: O(n)
+peek: O(1)
