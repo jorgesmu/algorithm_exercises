@@ -14,3 +14,13 @@ def swap(a, b):
 print('swap of a: ', a, ', b: ', b, 'is:')
 a, b = swap(a, b)
 print('a: ', a, ', b: ', b)
+
+def swap_bits(a, b):
+	a = a^b 
+	b = a^b
+	a = a^b
+	return a, b
+
+print('swap (bits implementation) of a: ', a, ', b: ', b, 'is:')
+a, b = swap_bits(a, b)
+print('a: ', a, ', b: ', b)	
