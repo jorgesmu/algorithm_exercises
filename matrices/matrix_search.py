@@ -29,6 +29,19 @@ matrix = [[0, 2, 4, 6],
 		  [24, 26, 28, 30]
 ]
 
+# Video impementation O(n+m)
+def search_discarting(matix, n):
+	row = 0
+	col = len(matrix[0]) - 1
+
+	while row < len(matrix) and col >= 0:
+		if matrix[row][col] == n:
+			return True
+		if matrix[row][col] < n:
+			row+=1
+		else:
+			col-=1
+	return False
 
 def execute(n):
 	print('looking for: ', n, ' found: ', search(matrix, n))
