@@ -8,7 +8,7 @@ class Node:
 
 class Trie:
 	def __init__(self, dictonary):
-		self.head = Node('')
+		self.__head = Node('')
 		for word in dictonary:
 			if len(word) > 0:
 				self.__insert_word(word)
@@ -17,7 +17,7 @@ class Trie:
 		if len(word) == 0:
 			return
 		pointer = 0
-		current_node = self.head
+		current_node = self.__head
 		while pointer < len(word):
 			current_char = word[pointer]
 			if not current_char in current_node.children:
@@ -27,7 +27,7 @@ class Trie:
 		current_node.is_word = True
 
 	def words_for(self, prefix):
-		current_node = self.head
+		current_node = self.__head
 		for char in prefix:
 			if not char in current_node.children:
 				return []
