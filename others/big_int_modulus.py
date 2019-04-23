@@ -1,4 +1,5 @@
 # Taken from: https://www.youtube.com/watch?v=5LCuroQltsc&list=PLNmW52ef0uwsjnM06LweaYEZr-wjPKBnj&index=36
+# long division: https://www.youtube.com/watch?v=rinhqaTwQnU
 import math
 
 def modulus(bytes_array, n):
