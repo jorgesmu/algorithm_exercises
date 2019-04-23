@@ -1,3 +1,7 @@
+# Now this is are copies of the trees placed under data structure
+# but all the excersices in this folder are based on this ones
+# if the other change we dont want to break interface for the excersices
+
 class Tree:
 	def __init__(self, value, id=''):
 		self.children = []
