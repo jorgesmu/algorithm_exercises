@@ -1,4 +1,4 @@
-# Now this is a copy of the stack placed under data structure
+# Now this is a copy of the heap placed under data structure
 # but all the excersices in this folder are based on this one
 # if the other change we dont want to break interface for the excersices
 
