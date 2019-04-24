@@ -1,1 +1,11 @@
+####################
+#### Mathematics ###
+####################
+long division: https://www.youtube.com/watch?v=rinhqaTwQnU
+
+####################
+#### Algorithms  ###
+####################
+
+graphs:
 https://www.redblobgames.com/pathfinding/a-star/introduction.html
