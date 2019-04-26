@@ -8,11 +8,13 @@ def zero_sub_array(array):
 		sum += array[i]
 		if sum in seen:
 			return array[seen[sum]+1:i+1]
+		elif sum == 0:
+			return array[:i+1]
 		else:
 			seen[sum] = i
 	return None
 
 
-array = [1, 2, -5, 1, 2, -1]
+array = [1, 2, 3, 4, 5, -15]
 print('Array: ', array)
 print('zero_sub_array: ', zero_sub_array(array))
