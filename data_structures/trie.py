@@ -1,48 +1,28 @@
-# Taken from: https://www.youtube.com/watch?v=NZ3lP33mXlY&list=PLNmW52ef0uwsjnM06LweaYEZr-wjPKBnj&index=46
-
-class Node:
-	def __init__(self, prefix):
-		self.prefix = prefix
-		self.children = {}
-		self.is_word = False
-
-class Trie:
-	def __init__(self, dictonary):
-		self.__head = Node('')
-		for word in dictonary:
-			if len(word) > 0:
-				self.__insert_word(word)
-
-	def __insert_word(self, word):
-		if len(word) == 0:
-			return
-		pointer = 0
-		current_node = self.__head
-		while pointer < len(word):
-			current_char = word[pointer]
-			if not current_char in current_node.children:
-				current_node.children[current_char] = Node(word[0:pointer+1])
-			current_node = current_node.children[current_char]
-			pointer+=1
-		current_node.is_word = True
-
-	def words_for(self, prefix):
-		current_node = self.__head
-		for char in prefix:
-			if not char in current_node.children:
-				return []
-			current_node = current_node.children[char]
-		return self.__find_words_for(current_node)
-
-	def __find_words_for(self, node):
-		queue = [node]
-		results = []
-		while len(queue) > 0:
-			current_node = queue.pop(0)
-			if current_node.is_word:
-				results.append(current_node.prefix)
-			for k in current_node.children:
-				queue.append(current_node.children[k])
-		return results
-
-
+class Solution(object):
+    def findStrobogrammatic(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        single = [1, 8]
+        opposites = {
+            1: 1,
+            8: 8,
+            6: 9,
+            9: 6
+        }
+        def make_tail(number):
+          
+        def make_front(n, odd, curr, singles, opposites, fronts):
+            if len(curr) == ((n+1)//2):
+                fronts.append(curr)
+            if odd and n == 1:
+                coll = signles
+            else:
+                coll = opposites
+            for opp in coll:
+                make_front(n-1, curr, singles, opposites, fronts):
+                
+        fronts = []
+        make_front(n, n%2==1, curr, single, opposites, fronts)  
+        print(fronts)
